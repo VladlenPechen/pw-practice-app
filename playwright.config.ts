@@ -16,7 +16,21 @@ export default defineConfig<TestOptions>({
   }, //for locator assertions
 
   retries: process.env.CI ? 2 : 1,
-  reporter: 'html',
+  reporter: [
+    // Use "dot" reporter on CI, "list" otherwise (Playwright default).
+    process.env.CI ? ["dot"] : ["list"],
+    // Add Argos reporter.
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+
+        // Set your Argos token (required if not using GitHub Actions).
+     },
+    ],
+    ['html']
+  ],
 
   use: {
     /* Configuration for Eyes VisualAI */
@@ -26,6 +40,7 @@ export default defineConfig<TestOptions>({
             : process.env.STAGING === '1' ? 'http://localhost:4202/' : 'http://localhost:4200/',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: 'only-on-failure',
     actionTimeout: 5000,
     navigationTimeout: 5000,
     video: {
@@ -73,7 +88,7 @@ export default defineConfig<TestOptions>({
       }
     }
   ],
-  webServer: {
+   webServer: {
     command: 'npm run start',
     url: 'http://localhost:4200'
   }

@@ -14,7 +14,7 @@
     "pageObjects-all": "npm run pageObjects-chrome & npm run pageObjects-firefox",
     "autoWait-dev": "url=http://uitestingplayground.com/ajax npx playwright test tests/autowaiting.spec.ts  --project=chromium"
   },
-   "overrides": {
+  "overrides": {
     "stylus": "github:stylus/stylus#0.54.5"
   },
   "dependencies": {
@@ -59,11 +59,12 @@
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.11.4"
   },
-    "devDependencies": {
+  "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.10",
     "@angular/cli": "^14.2.10",
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
+    "@argos-ci/playwright": "^6.1.0",
     "@compodoc/compodoc": "^1.1.19",
     "@faker-js/faker": "^9.9.0",
     "@fortawesome/fontawesome-free": "^5.2.0",
