@@ -27,8 +27,7 @@ export default defineConfig<TestOptions>({
         uploadToArgos: !!process.env.CI,
 
         // Set your Argos token (required if not using GitHub Actions).
-        token: "<YOUR-ARGOS-TOKEN>",
-      },
+     },
     ],
     ['html']
   ],
@@ -89,8 +88,8 @@ export default defineConfig<TestOptions>({
       }
     }
   ],
-  webServer: {
-    command: 'npm run start',
-    url: 'http://localhost:4200'
-  }
+  // webServer: {
+  //   command: 'npm run start',
+  //   url: 'http://localhost:4200'
+  // }
 });
